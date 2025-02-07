@@ -54,7 +54,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.pl.jwiki.JwikiApplication</mainClass>
+                    <mainClass>com.pl.jwiki.config.JwikiApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>
