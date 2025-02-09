@@ -1,5 +1,6 @@
 package com.pl.jwiki.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,9 +9,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 //扫描多个包
-//@ComponentScan({"com.pl","com.ppl"})
+//@ComponentScan({"com.pl","com.ppl"})  识别带有 @Component、@Service、@Repository、@Controller
 @ComponentScan("com.pl")
-@SpringBootApplication //ComponentScan只能扫描当前的子包
+@SpringBootApplication //SpringBootApplication包含ComponentScan    ComponentScan只能扫描当前的子包
+@MapperScan("com.pl.jwiki.mapper")  //识别mapper接口
 public class JwikiApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(JwikiApplication.class);

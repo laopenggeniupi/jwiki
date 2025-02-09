@@ -12,6 +12,10 @@ client.test("test-hello", function() {
 %}
 ###
 
+GET http://localhost:8880/test/list
+Accept: application/json
+
+###
 POST http://localhost:8880/hello/post
 Content-Type: application/x-www-form-urlencoded
 
