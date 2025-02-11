@@ -40,7 +40,9 @@
                              targetPackage="com.pl.jwiki.mapper"
                              type="XMLMAPPER"/>
 
-        <table tableName="demo" domainObjectName="Demo"/>
+        <!--domainObjectName指mybatis自动生成数据库表的Java实体类名称    可删-->
+        <!--<table tableName="demo" domainObjectName="Demo"/>-->
+        <table tableName="ebook"/>
         <!--<table tableName="ebook"/>-->
         <!--<table tableName="category"/>-->
         <!--<table tableName="doc"/>-->
