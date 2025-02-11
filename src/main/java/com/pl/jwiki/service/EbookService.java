@@ -5,7 +5,7 @@ import com.pl.jwiki.domain.EbookExample;
 import com.pl.jwiki.mapper.EbookMapper;
 import com.pl.jwiki.req.EbookReq;
 import com.pl.jwiki.resp.EbookResp;
-import org.springframework.beans.BeanUtils;
+import com.pl.jwiki.util.CopyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,10 +27,15 @@ public class EbookService {
         List<EbookResp> respList = new ArrayList<>();
         //快捷键iter
         for (Ebook ebook : ebooks) {
-            EbookResp ebookResp = new EbookResp();
-            BeanUtils.copyProperties(ebook, ebookResp);
+           // EbookResp ebookResp = new EbookResp();
+           // BeanUtils.copyProperties(ebook, ebookResp);
+           // 单体对象复制     使用自定义工具类CopyUtil
+            EbookResp ebookResp = CopyUtil.copy(ebook, EbookResp.class);
             respList.add(ebookResp);
         }
-        return respList;
+
+        //列表复制
+        List<EbookResp> list = CopyUtil.copyList(ebooks, EbookResp.class);
+        return list;
     }
 }
