@@ -48,22 +48,36 @@
     <a-layout-content
         :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
     >
-      Content
+      <pre>
+{{ebooks}}
+      </pre>
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'; // @ is an alias to /src
+import { defineComponent , onMounted , ref } from 'vue'; // @ is an alias to /src
 import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
   setup() {
     console.log("setup");
-    axios.get("http://localhost:8880/ebook/list?name=spring").then(function (response) {
-      console.log(response);
+    const ebooks = ref();
+
+    onMounted(() => {
+      console.log("onMounted");
+      axios.get("http://localhost:8880/ebook/list?name=spring").then(function (response) {
+        const data = response.data;
+        //value出错，表示TypeScript版本过低，然后刷新TypeScript重启服务
+        //项目内安装TypeScript 查看版本npx tsc --version   全局内安装TypeScript 查看版本tsc --version
+        ebooks.value = data.content;
+        console.log(response);
+      });
     });
+    return{
+      ebooks
+    }
   }
 });
 </script>
