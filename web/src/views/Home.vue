@@ -50,20 +50,22 @@
     >
       <pre>
 {{ebooks}}
+<!--{{ebooks2}}-->
       </pre>
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent , onMounted , ref } from 'vue'; // @ is an alias to /src
+import { defineComponent , onMounted , ref , reactive , toRef} from 'vue'; // @ is an alias to /src
 import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
   setup() {
     console.log("setup");
-    const ebooks = ref();
+    const ebooks = ref();  //ref  和  reactive , toRef使用二选一
+    // const ebooks1 = reactive({books : []});
 
     onMounted(() => {
       console.log("onMounted");
@@ -72,11 +74,14 @@ export default defineComponent({
         //value出错，表示TypeScript版本过低，然后刷新TypeScript重启服务
         //项目内安装TypeScript 查看版本npx tsc --version   全局内安装TypeScript 查看版本tsc --version
         ebooks.value = data.content;
+        //data.content查出来的内容实际是一个数组
+        // ebooks1.books = data.content;
         console.log(response);
       });
     });
     return{
-      ebooks
+      ebooks,
+      // ebooks2 : toRef(ebooks1, "books")
     }
   }
 });
