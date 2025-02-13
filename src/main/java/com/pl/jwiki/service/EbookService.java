@@ -29,7 +29,6 @@ public class EbookService {
         //    // EbookResp ebookResp = new EbookResp();
         //    // BeanUtils.copyProperties(ebook, ebookResp);
         //    // 单体对象复制     使用自定义工具类CopyUtil
-
         //     EbookResp ebookResp = CopyUtil.copy(ebook, EbookResp.class);
         //     respList.add(ebookResp);
         // }
