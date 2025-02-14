@@ -98,7 +98,7 @@ export default defineComponent({
 
     onMounted(() => {
       console.log("onMounted");
-      axios.get("http://localhost:8880/ebook/list?name=spring").then(function (response) {
+      axios.get("http://localhost:8880/ebook/list").then(function (response) {
         const data = response.data;
         //value出错，表示TypeScript版本过低，然后刷新TypeScript重启服务
         //项目内安装TypeScript 查看版本npx tsc --version   全局内安装TypeScript 查看版本tsc --version
@@ -130,3 +130,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.ant-avatar {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 8%;
+  margin: 5px 0;
+}
+</style>
