@@ -97,8 +97,8 @@ export default defineComponent({
     // const ebooks1 = reactive({books : []});
 
     onMounted(() => {
-      console.log("onMounted");
-      axios.get("http://localhost:8880/ebook/list").then(function (response) {
+      console.log("onMounted111");
+      axios.get(process.env.VUE_APP_SERVER + "/ebook/list").then(function (response) {
         const data = response.data;
         //value出错，表示TypeScript版本过低，然后刷新TypeScript重启服务
         //项目内安装TypeScript 查看版本npx tsc --version   全局内安装TypeScript 查看版本tsc --version
