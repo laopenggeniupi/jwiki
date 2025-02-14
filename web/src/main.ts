@@ -16,6 +16,23 @@ app.use(store).use(router).use(Antd).mount('#app')
 //axios全局配置地址省略process.env.VUE_APP_SERVER
 axios.defaults.baseURL = process.env.VUE_APP_SERVER;
 
+/**
+ * axios拦截器 使用日志查看信息
+ */
+axios.interceptors.request.use(function (config) {
+    console.log('请求参数：', config);
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+axios.interceptors.response.use(function (response) {
+    console.log('返回结果：', response);
+    return response;
+}, error => {
+    console.log('返回错误：', error);
+    return Promise.reject(error);
+});
+
 // 使用全局图标，遇到不同图标不需要一个个import
 const icons: any = Icons;
 for (const i in icons) {

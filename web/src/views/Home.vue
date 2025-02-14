@@ -92,12 +92,12 @@ for (let i = 0; i < 23; i++) {
 export default defineComponent({
   name: 'Home',
   setup() {
-    console.log("setup");
+//    console.log("setup");
     const ebooks = ref();  //ref  和  reactive , toRef使用二选一
     // const ebooks1 = reactive({books : []});
 
     onMounted(() => {
-      console.log("onMounted222");
+//      console.log("onMounted222");
       //axios全局配置地址省略process.env.VUE_APP_SERVER      原先axios.get(process.env.VUE_APP_SERVER + "/ebook/list")
       axios.get("/ebook/list").then(function (response) {
         const data = response.data;
@@ -106,7 +106,7 @@ export default defineComponent({
         ebooks.value = data.content;
         //data.content查出来的内容实际是一个数组
         // ebooks1.books = data.content;
-        console.log(response);
+//        console.log(response);
       });
     });
 
